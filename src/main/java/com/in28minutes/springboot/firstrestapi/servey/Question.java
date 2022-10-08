@@ -39,6 +39,22 @@ public class Question {
         return options;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
