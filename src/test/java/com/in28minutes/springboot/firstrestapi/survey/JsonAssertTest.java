@@ -16,7 +16,7 @@ class JsonAssertTest {
                         """;
         String actualResponse =
                 """
-                       {"id":"Question1","description":"Most Popular Cloud Platform Today","correctAnswer":"AWS","options":["AWS","Azure","Google Cloud","Oracle Cloud"]}
+                    {"id":"Question1","description":"Most Popular Cloud Platform Today","correctAnswer":"AWS","options":["AWS","Azure","Google Cloud","Oracle Cloud"]}
                         """;
         JSONAssert.assertEquals(expectedResponse, actualResponse, true);
     }

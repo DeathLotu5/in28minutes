@@ -6,6 +6,7 @@ import com.in28minutes.springboot.firstrestapi.servey.SurveyService;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -22,6 +23,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(controllers = SurveyResource.class)
+@AutoConfigureMockMvc(addFilters = false) //addFilters = false => ignore tất cả các filters (security)
+    //Thông thường Unit Test là chúng ta test các layer của resource nên sẽ không cần dùng đến Security.
 class SurveyResourceTest {
 
     @MockBean
@@ -38,7 +41,7 @@ class SurveyResourceTest {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(SPECIFIC_QUESTION_URL).accept(MediaType.APPLICATION_JSON);
         MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
 
-        assertEquals(404, mvcResult.getResponse().getStatus());
+        assertEquals(200, mvcResult.getResponse().getStatus());
 
         System.out.println(mvcResult.getResponse().getContentAsString());
     }
